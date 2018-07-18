@@ -9,38 +9,19 @@ function fetchAnimals(e){
   e.preventDefault();
 
   //get user input
-  const userinput = document.querySelector('#inputInfo').value;
-  const inputInfo = document.querySelector('#device_id').value;
+  // const userinput = document.querySelector('#inputInfo').value;
+  // const inputInfo = document.querySelector('#device_id').value;
 
-//   //fetch pets
-//   fetchJsonp(`http://api.petfinder.com/pet.find?format=json&key=YOUKEY&useremail=${useremail}&callback=callback`,
-//     {jsonpCallbackFunction:'callback'
-// })
-//   .then(res => res.json())
-//   // .then(data => showPet(data.))   //need to be changed based on the json object
-//   .catch(err => console.log(err))
+  const resultsnumber = document.querySelector('#resultsnumber').value;
+  const url = 'https://randomapi.com/api/k9lkaclg?key=A78T-GPK4-ZTFX-Z2PN&results=${resultsnumber}'
 
-  //fetch api
-  fetch("https://randomapi.com/api/?key=A78T-GPK4-ZTFX-Z2PN&ref=k9lkaclg", {
-    method: "post",
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-
-    //make sure to serialize your JSON body
-    body: JSON.stringify({
-      inputtype: userinput,
-      inputValue: inputInfo
-    })
-  })
-  .then(res => res.json())
-  // .then(data => showPet(data.))   //need to be changed based on the json object
-  .catch(err => console.log(err))
+  console.log(resultsnumber)
+  fetch(url)
+     .then(res => res.json())
+     // .then(data => showAnimals(data.petfinder.pets.pet))
+     .then(data => console.log(data))
+     .catch(err => console.log(err));
 }
-
-
-
 
 
 //create function of showPet
